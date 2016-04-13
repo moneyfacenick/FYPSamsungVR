@@ -63,14 +63,14 @@ public class CameraBobbing : MonoBehaviour {
 				transform.Translate(0, -BobSpeed * Time.deltaTime, 0);
 			}
 
-			if (Mathf.Abs(bobValue - amountBobbed) < 2.5) {
+			if (Mathf.Abs(bobValue - amountBobbed) < 5) {
 				amountBobbed = bobValue;
 			}
 		} 
 
 		// if bob value is reach camera moves towards original y value
 		else {
-			if(Mathf.Abs(initialY - transform.position.y) > 2.5f)
+			if(Mathf.Abs(initialY - transform.position.y) > 5f)
 			{
 				if (positiveBob) {
 					transform.Translate (0, -BobSpeed * Time.deltaTime, 0);
@@ -78,12 +78,12 @@ public class CameraBobbing : MonoBehaviour {
 				else {
 					transform.Translate (0, BobSpeed * Time.deltaTime, 0);
 				}
+			}
 
-				if (Mathf.Abs (initialY - transform.position.y) < 2.5f) {
-					Vector3 position = transform.position;
-					position.y = initialY;
-					transform.position = position;
-				}
+			if (Mathf.Abs (initialY - transform.position.y) < 5f) {
+				Vector3 position = transform.position;
+				position.y = initialY;
+				transform.position = position;
 			}
 		}
 	}
@@ -100,8 +100,8 @@ public class CameraBobbing : MonoBehaviour {
 		// Checking if bobbing up or down wards
 		sameBob = false;
 
-		// Checking if the Y value have changed more than 150 units
-		if (Mathf.Abs (initialY - transform.position.y) < 150) {
+		// Checking if the Y value have changed more than 75 units
+		if (Mathf.Abs (initialY - transform.position.y) < 75) {
 			if (Random.Range (0, 2) == 1) {
 
 				// If this frame result is also positive Bob same bob becomes true
